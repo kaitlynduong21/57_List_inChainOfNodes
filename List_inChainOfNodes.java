@@ -33,9 +33,10 @@ public class List_inChainOfNodes{
       String str = "[";
       Node current = headReference;
       for (int i = 0; i < this.size(); i ++) {
-        str += current;
+        str += current.getCargoReference() + ",";
+        current = current.getReferenceToNextNode();
       }
-      return str;
+      return str += "]";
     }
 
 
@@ -44,6 +45,9 @@ public class List_inChainOfNodes{
       @return true, in keeping with conventions yet to be discussed
      */
      public boolean addAsHead( Object val) {
-        return true;
+       //Node tempReference = headReference.getReferenceToNextNode();
+       Node addVal = new Node (val, headReference);
+       headReference = addVal;
+      return true;
      }
 }

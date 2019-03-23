@@ -42,6 +42,10 @@ public class Node {
         return result;
     }
 
+    public String getCargoReference() {
+      return cargoReference.toString();
+    }
+
     // // classic accessor and mutator
     public Node getReferenceToNextNode() {
       return referenceToNextNode;
