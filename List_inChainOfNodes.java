@@ -50,4 +50,50 @@ public class List_inChainOfNodes{
        headReference = addVal;
       return true;
      }
+
+     public Object set(int index, Object val) {
+       int count = 0;
+       Node current = headReference;
+       while(count != index) {
+         count ++;
+         current = current.getReferenceToNextNode();
+       }
+       Object old = current.getCargoReference();
+       current.setCargoReference(val);
+       return old;
+     }
+
+     public Object get(int index) {
+       int count = 0;
+       Node current = headReference;
+       while(count != index) {
+         count ++;
+         current = current.getReferenceToNextNode();
+       }
+       return current.getCargoReference();
+     }
+
+     public void add (int index, Object val) {
+       int count = 0;
+       Node current = headReference;
+       while(count != index - 1) {
+         count ++;
+         current = current.getReferenceToNextNode();
+       }
+       Node addThis = new Node (val, current.getReferenceToNextNode());
+       current.setReferenceToNextNode(addThis);
+     }
+
+    public Object remove(int index) {
+      int count = 0;
+      Node current = headReference;
+      while(count != index - 1) {
+        count ++;
+        current = current.getReferenceToNextNode();
+      }
+      Object removed = current.getReferenceToNextNode().getCargoReference();
+      Node holder = current.getReferenceToNextNode().getReferenceToNextNode();
+      current.setReferenceToNextNode(holder);
+      return removed;
+    }
 }
