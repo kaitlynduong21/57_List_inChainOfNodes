@@ -26,5 +26,29 @@ public class UserOfList {
         }
         System.out.println( "populated list: " + list
                           + System.lineSeparator());
+
+        System.out.println("*****Test Using Recursive*****");
+        List_inChainOfNodes_recursive list1 = new List_inChainOfNodes_recursive();
+
+        System.out.println( "number of elements: " + list1.size() );
+
+        // // the spec requests that toString include the size
+        System.out.println( "empty list: " + list1
+                          + System.lineSeparator());
+
+        /* Populate the list with elements.
+           Create the test data in an array, for the programming
+           convenience of being able to loop through it.
+        */
+        elements = new String[]{"y","u","t","S",};
+            /* convenient syntax      ^^^^^^^^^^^^^^^^^^^^
+               for convenient way to init an array of Strings */
+        for( String elem : elements ) {
+            list1.addAsHead( elem);
+            System.out.println( "number of elements: " + list1.size() );
+            //System.out.println(list); debugging purposes
+        }
+        System.out.println( "populated list: " + list1
+                          + System.lineSeparator());
     }
 }
