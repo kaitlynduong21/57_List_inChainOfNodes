@@ -31,15 +31,21 @@ public class UserOfList {
         System.out.println("Testing Add");
         list.add(3, "d");
         System.out.println("Adding \"d\" at element 3: " + list);
+        list.add(0, "K");
+        System.out.println("Adding \"K\" at the head: " + list);
+        list.add(1, "l");
+        System.out.println("Adding \"l\" at element 1: " + list);
+        list.add(list.size(), "j");
+        System.out.println("Adding \"j\" at the end: " + list);
 
         System.out.println("Testing Get");
         for (int i = 0; i < list.size(); i ++) {
           System.out.println("Element " + i + " : " + list.get(i));
         }
 
-        System.out.println("\nTesting Set");
+        /*System.out.println("\nTesting Set");
         list.set(3, "e");
-        System.out.println("Setting element 3 to \"e\": " + list);
+        System.out.println("Setting element 3 to \"e\": " + list);*/
 
         System.out.println("\nTesting Remove");
         list.remove(3);

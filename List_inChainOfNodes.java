@@ -52,48 +52,49 @@ public class List_inChainOfNodes{
      }
 
      public Object set(int index, Object val) {
-       int count = 0;
-       Node current = headReference;
-       while(count != index) {
-         count ++;
-         current = current.getReferenceToNextNode();
-       }
-       Object old = current.getCargoReference();
-       current.setCargoReference(val);
+       Node node = getNode(index);
+       Object old = node.getCargoReference();
+       node.setCargoReference(val);
        return old;
      }
 
-     public Object get(int index) {
-       int count = 0;
-       Node current = headReference;
-       while(count != index) {
-         count ++;
-         current = current.getReferenceToNextNode();
+     private Node getNode(int index) {
+       int count;
+       Node current;
+       for (count = 0, current = headReference;
+            count != index;
+            count ++, current = current.getReferenceToNextNode()){
        }
-       return current.getCargoReference();
+       return current;
+     }
+
+     public Object get(int index) {
+       return getNode(index).getCargoReference();
      }
 
      public void add (int index, Object val) {
-       int count = 0;
-       Node current = headReference;
-       while(count != index - 1) {
-         count ++;
-         current = current.getReferenceToNextNode();
+       if (index == 0) {
+         addAsHead(val);
+       } else {
+         Node current = getNode(index - 1);
+         Node addThis = new Node (val, current.getReferenceToNextNode());
+         current.setReferenceToNextNode(addThis);
        }
-       Node addThis = new Node (val, current.getReferenceToNextNode());
-       current.setReferenceToNextNode(addThis);
      }
 
-    public Object remove(int index) {
-      int count = 0;
-      Node current = headReference;
-      while(count != index - 1) {
-        count ++;
-        current = current.getReferenceToNextNode();
-      }
-      Object removed = current.getReferenceToNextNode().getCargoReference();
-      Node holder = current.getReferenceToNextNode().getReferenceToNextNode();
-      current.setReferenceToNextNode(holder);
-      return removed;
-    }
+     public Object remove(int index) {
+       int count;
+       Node current;
+       Object removed;
+       if (index == 0) {
+         removed = headReference.getCargoReference();
+         headReference = headReference.getReferenceToNextNode();
+       } else {
+         Node node = getNode(index - 1);
+         removed = node.getReferenceToNextNode().getCargoReference();
+         Node holder = node.getReferenceToNextNode().getReferenceToNextNode();
+         node.setReferenceToNextNode(holder);
+       }
+       return removed;
+     }
 }
