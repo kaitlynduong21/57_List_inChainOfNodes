@@ -33,8 +33,7 @@ public class List_inChainOfNodes{
       String str = "[";
       Node current = headReference;
       for (int i = 0; i < this.size(); i ++) {
-        str += current.getCargoReference() + ",";
-        current = current.getReferenceToNextNode();
+        str += getNode(i).getCargoReference() + ",";
       }
       return str += "]";
     }
